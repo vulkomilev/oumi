@@ -70,7 +70,7 @@ def mock_lora_request():
 
 def _get_default_model_params(use_lora: bool = False) -> ModelParams:
     return ModelParams(
-        model_name="MlpEncoder",
+        model_name="molmo",
         adapter_model="/path/to/adapter" if use_lora else None,
         trust_remote_code=True,
         tokenizer_pad_token="<pad>",
@@ -542,7 +542,7 @@ def test_guided_decoding_json(
     }
     config = InferenceConfig(
         model=ModelParams(
-            model_name="MlpEncoder", tokenizer_name="gpt2", tokenizer_pad_token="<eos>"
+            model_name="molmo", tokenizer_name="gpt2", tokenizer_pad_token="<eos>"
         ),
         generation=GenerationParams(guided_decoding=GuidedDecodingParams(json=schema)),
     )
@@ -570,7 +570,7 @@ def test_guided_decoding_regex(mock_vllm, mock_sampling_params):
 
     config = InferenceConfig(
         model=ModelParams(
-            model_name="MlpEncoder", tokenizer_name="gpt2", tokenizer_pad_token="<eos>"
+            model_name="molmo", tokenizer_name="gpt2", tokenizer_pad_token="<eos>"
         ),
         generation=GenerationParams(
             guided_decoding=GuidedDecodingParams(regex=pattern)
@@ -604,7 +604,7 @@ def test_guided_decoding_choice(mock_vllm, mock_sampling_params):
     choices = ["option1", "option2"]
     config = InferenceConfig(
         model=ModelParams(
-            model_name="MlpEncoder", tokenizer_name="gpt2", tokenizer_pad_token="<eos>"
+            model_name="molmo", tokenizer_name="gpt2", tokenizer_pad_token="<eos>"
         ),
         generation=GenerationParams(
             guided_decoding=GuidedDecodingParams(choice=choices)
